@@ -24,6 +24,9 @@ pipeline {
             stage('Push Stage'){
                 steps {
                     dir('Week9') {
+                        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                            sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+                        }
                         sh 'docker push it63070029/my-backend_image:1.0'
                         sh 'docker push it63070029/my-frontend_image:1.0'
                     }
