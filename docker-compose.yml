@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  backend:
+    build:
+      context: ./Back
+      dockerfile: Dockerfile
+    image: it63070029/my-backend_image:1.0
+
+  frontend:
+    build:
+      context: ./Front
+      dockerfile: Dockerfile
+    image: it63070029/my-frontend_image:1.0
+
